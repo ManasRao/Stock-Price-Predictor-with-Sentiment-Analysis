@@ -1,20 +1,49 @@
-# Stock Prediction using News Info Sentiment (LSTM)
-![Results](./output.png)
+# Stock Price Prediction Using News Sentiment (LSTM)
 
-## How to run?
-1. Step 1: Scrapping the news heading (news_scrapping.ipynb)
-2. Step 2: Performing sentiment analysis on news headings (sentiment_analysis.ipynb)
-3. Step 3: Preparing data for training (data_prep.ipynb)
-4. Step 4: Training on the merged dataset (training.ipynb)
+This project explores how sentiment from daily financial news headlines can be used to improve stock price prediction using an LSTM (Long Short-Term Memory) model. By combining sentiment analysis with historical stock data, the model aims to capture market behavior influenced by real-world events.
 
-## Approach for LSTM
-The dataset is structured to feed historical sequences of feature values to the LSTM model, allowing it to learn patterns over time. The LSTM model is then trained to predict the target variable (e.g., the future stock price) based on the historical information. The normalization step ensures that all values are within a consistent range, which can improve the training process for neural networks.
+---
 
-## News Integration
-Wall Street reports that: Political factors that range from relations with other nations to government policies can affect share prices.
-If you closely look at the headlines.json: whenever government took any initiative, shares rise. CPEC for an instance has caused alomost doubling up of stock prices in the last five years.
+## How to Run
 
-## Algorithm
-Majority of it is explained by the concept approach but what makes a difference is how to use this news info with the prediction algorithm. NLP is used to analyse the daily news titles calculating the amount of negativity, neutrality, positivity, and compound (a kind of net result).
+1. **Scrape News Headlines**  
+   Run `news_scrapping.ipynb` to collect daily news headlines.
 
-Logic says that current news and stock data can't directly affect the next day's price as stocks move in random. But current day's news directly effect the current day's stock for example PSX grew 1140 points after Panama Verdict. Though it can be said that current information will have some effect on the next day. If we use this current information and next day's news information, it now seems logical to predict what stock price would be in the end of the day.
+2. **Perform Sentiment Analysis**  
+   Use `sentiment_analysis.ipynb` to compute sentiment scores (positive, negative, neutral, compound) for each headline.
+
+3. **Prepare the Dataset**  
+   Run `data_prep.ipynb` to merge stock data with sentiment scores and format it for model input.
+
+4. **Train the Model**  
+   Open `training.ipynb` to train the LSTM model and evaluate prediction results.
+
+---
+
+## LSTM-Based Modeling Approach
+
+The model is designed to capture temporal patterns in stock prices using past data sequences. It is trained on normalized feature values including historical prices and sentiment metrics. This setup helps the LSTM model learn correlations and trends over time.
+
+---
+
+## News Sentiment Integration
+
+Sentiment scores are derived from daily financial headlines using natural language processing. The intuition is that political events, policy changes, and global news directly influence market performance. For example, major policy announcements or judicial verdicts have historically led to sharp price changes (e.g., CPEC or Panama Papers).
+
+By incorporating both current and next-day headlines, the model accounts for short-term market reactions and aims to make better end-of-day price predictions.
+
+---
+
+## Summary of Algorithm
+
+- Collect news headlines.
+- Analyze sentiment (positive, negative, neutral, compound).
+- Merge with historical stock data.
+- Format data into sequences for LSTM input.
+- Train the model and predict future stock prices.
+
+---
+
+## Output
+
+Prediction results and visualizations can be found in `output.png`.
